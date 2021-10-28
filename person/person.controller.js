@@ -1,4 +1,10 @@
-import { savePersonService } from "./person.service.js";
+import {
+  savePersonService,
+  updatePersonService,
+  getPersonService,
+  getAllPersonService,
+  deletePersonService,
+} from "./person.service.js";
 
 export const savePerson = async (req, res) => {
   console.log(`hgagghfg`);
@@ -7,10 +13,26 @@ export const savePerson = async (req, res) => {
   res.status(201).send(result);
 };
 
-export const updatePerson = (req, res) => {};
+export const updatePerson = async (req, res) => {
+  const uuid = req.params.uuid;
+  let data = req.body;
+  const result = await updatePersonService(uuid, data);
+  res.status(201).send(result);
+};
 
-export const getPerson = (req, res) => {};
+export const getPerson = async (req, res) => {
+  const uuid = req.params.uuid;
+  const result = await getPersonService(uuid);
+  res.status(201).send(result);
+};
 
-export const getAllPerson = (req, res) => {};
+export const getAllPerson = async (req, res) => {
+  const result = await getAllPersonService();
+  res.status(201).send(result);
+};
 
-export const deletePerson = (req, res) => {};
+export const deletePerson = async (req, res) => {
+  const uuid = req.params.uuid;
+  const result = await deletePersonService(uuid);
+  res.status(201).send(result);
+};
