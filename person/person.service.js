@@ -2,7 +2,7 @@ import Person from "./person.js";
 
 export const savePersonService = async (data) => {
   console.log(`data`, data);
-  const person = new Person({ name: "sadfd" });
+  const person = new Person(data);
   console.log(`Person`, person);
   const result = await person.save();
   console.log(`result`, result);
